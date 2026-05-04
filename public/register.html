@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="description" content="Register Admin - DGA Heirs" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Register Admin</title>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f4f4f7;
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+    }
+    .login-card {
+      width: min(420px, calc(100% - 32px));
+      background: #ffffff;
+      padding: 36px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .login-card h2 {
+      margin-bottom: 24px;
+      font-size: 2rem;
+    }
+    .login-card input {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+    .login-card button {
+      width: 100%;
+      padding: 14px 16px;
+      border: none;
+      border-radius: 12px;
+      background: #000000;
+      color: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .login-card button:hover {
+      background: #111111;
+    }
+    .login-card .message {
+      margin-top: 16px;
+      color: #16a34a;
+      font-size: 0.95rem;
+    }
+    .login-card .hint {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: #6b7280;
+    }
+    .login-card .hint a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <h2>Register Admin</h2>
+    <input id="email" type="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+    <button onclick="register()">Register</button>
+    <div id="message" class="message"></div>
+    <div class="hint">Already have an account? <a href="admin.html">Login here</a>.</div>
+  </div>
+
+  <script>
+    async function register() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      message.textContent = "";
+      if (!email || !password) {
+        message.style.color = "#dc2626";
+        message.textContent = "Please enter both email and password.";
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+
+        if (!res.ok) {
+          const data = await res.json();
+          message.style.color = "#dc2626";
+          message.textContent = data.error || "Registration failed.";
+          return;
+        }
+
+        message.style.color = "#16a34a";
+        message.textContent = "Account created. You can now login.";
+      } catch (error) {
+        message.style.color = "#dc2626";
+        message.textContent = "Unable to connect. Please try again.";
+      }
+    }
+  </script>
+</body>
+</html>
