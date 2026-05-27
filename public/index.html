@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="DGA Heirs - Founder Intelligence Hub. Building companies, publishing knowledge, influencing industry thinking." />
   <meta name="keywords" content="DGA Heirs, Music Distro Global, JFort Media, music distribution, media company, ebooks, industry insights" />
   <meta name="author" content="Damilola G. Alonge" />
   <meta property="og:title" content="DGA Heirs - Founder Intelligence Hub" />
   <meta property="og:description" content="Founder-led ecosystem building companies, publishing knowledge, and influencing industry thinking." />
   <meta property="og:type" content="website" />
+  <title>DGA Heirs</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-
-  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="nav-container">
       <div class="nav-brand">DGA Heirs</div>
@@ -24,32 +26,59 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>DGA Heirs</h1>
-  </section>
-
-  <!-- FOUNDER -->
-  <section class="founder reveal">
-    <img src="images/founder.jpg" alt="Damilola G. Alonge" class="founder-img" />
-    <div class="founder-badge">FOUNDER</div>
-    <h2>Damilola G. Alonge</h2>
-    <p>Serial entrepreneur building digital ecosystems across music, media & technology. Founder of Music Distro Global, JFort Media, and multiple ventures in the creator economy.</p>
-  </section>
-
-  <!-- COMPANIES -->
-  <section class="companies reveal">
-    <h2>Companies</h2>
-    <div class="carousel-container">
-      <div class="carousel-track" id="companies">
-        <!-- Companies will be loaded here -->
+  <section class="hero-carousel">
+    <div class="carousel-wrapper">
+      <div class="carousel-slides">
+        <div class="slide active" style="background: linear-gradient(135deg, #06142f 0%, #0b2d6b 54%, #3a1f78 100%);">
+          <div class="slide-content">
+            <h1 class="slide-title">DGA Heirs</h1>
+            <p class="slide-subtitle">Founder Intelligence Hub</p>
+            <a href="#companies" class="cta-button">Explore Companies</a>
+          </div>
+        </div>
+        <div class="slide" style="background: linear-gradient(135deg, #081735 0%, #28155d 58%, #a88435 100%);">
+          <div class="slide-content">
+            <h1 class="slide-title">Strategic Ebooks</h1>
+            <p class="slide-subtitle">Knowledge for Founder-Led Growth</p>
+            <a href="ebooks.html" class="cta-button">Download Now</a>
+          </div>
+        </div>
+        <div class="slide" style="background: linear-gradient(135deg, #031026 0%, #103b82 52%, #4b2aa0 100%);">
+          <div class="slide-content">
+            <h1 class="slide-title">Industry Insights</h1>
+            <p class="slide-subtitle">Thought Leadership &amp; Analysis</p>
+            <a href="blogs.html" class="cta-button">Read More</a>
+          </div>
+        </div>
       </div>
-      <button class="carousel-btn carousel-prev">‹</button>
-      <button class="carousel-btn carousel-next">›</button>
+      <div class="carousel-nav">
+        <button class="nav-arrow prev-arrow" aria-label="Previous slide">&lsaquo;</button>
+        <div class="nav-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+        </div>
+        <button class="nav-arrow next-arrow" aria-label="Next slide">&rsaquo;</button>
+      </div>
     </div>
   </section>
 
-  <!-- FEATURED CONTENT -->
+  <section class="founder reveal">
+    <img src="images/Founder.jpg" alt="Damilola G. Alonge" class="founder-img" />
+    <div class="founder-badge">FOUNDER</div>
+    <h2>Damilola G. Alonge</h2>
+    <p>Serial entrepreneur building digital ecosystems across music, media &amp; technology. Founder of Music Distro Global, JFort Media, and multiple ventures in the creator economy.</p>
+  </section>
+
+  <section class="companies reveal">
+    <h2>Companies</h2>
+    <div class="carousel-container">
+      <div class="carousel-track" id="companies"></div>
+      <button class="carousel-btn carousel-prev" aria-label="Previous company">&lsaquo;</button>
+      <button class="carousel-btn carousel-next" aria-label="Next company">&rsaquo;</button>
+    </div>
+  </section>
+
   <section class="featured-content reveal">
     <div class="page-header">
       <h2>Featured Knowledge</h2>
@@ -61,31 +90,23 @@
     </div>
   </section>
 
-  <!-- QUOTES SECTION -->
   <section class="quotes reveal">
-    <blockquote>"I don’t build brands. I build systems that build brands."</blockquote>
+    <blockquote>"I don't build brands. I build systems that build brands."</blockquote>
     <blockquote>"Knowledge is the currency of influence."</blockquote>
     <blockquote>"Every company is a hypothesis waiting to be tested."</blockquote>
   </section>
 
   <footer class="footer">
     <h3>DGA Heirs</h3>
-    <p>Building digital ecosystems across music, media & technology.</p>
+    <p>Building digital ecosystems across music, media &amp; technology.</p>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="companies.html">Companies</a>
       <a href="mailto:contact@dgaheirs.com">Contact</a>
     </div>
-    <p class="copyright">
-      © 2026 DGA Heirs. All rights reserved.
-    </p>
+    <p class="copyright">&copy; 2026 DGA Heirs. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-<div class="gallery">
-  <img src="images/pic1.jpg">
-  <img src="images/pic2.jpg">
-</div>

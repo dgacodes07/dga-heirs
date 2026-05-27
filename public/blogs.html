@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="DGA Heirs - Industry Insights. Thought leadership on the creator economy and media." />
   <meta name="keywords" content="DGA Heirs, blog, industry insights, music, business, media" />
   <meta name="author" content="Damilola G. Alonge" />
   <meta property="og:title" content="DGA Heirs - Industry Insights" />
   <meta property="og:description" content="Industry analysis and thought leadership on the creator economy." />
   <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="style.css" />
   <title>Industry Insights - DGA Heirs</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="nav-container">
       <div class="nav-brand"><a href="index.html">DGA Heirs</a></div>
@@ -25,45 +25,58 @@
     </div>
   </nav>
 
-  <!-- BLOGS -->
   <section class="blogs-page">
     <div class="page-header">
       <h1>Industry Insights</h1>
       <p>Thought leadership on the creator economy and media.</p>
     </div>
-    <div class="blog-grid">
-      <div class="blog-post">
-        <span class="category">Music</span>
-        <h3>Why most artists fail in distribution systems</h3>
-        <p>The hidden bottlenecks in music distribution and how to overcome them. Understanding the complexities of global music markets and the strategies that successful artists employ to navigate them effectively.</p>
-        <a href="#" class="read-more">Read more</a>
-      </div>
-      <div class="blog-post">
-        <span class="category">Business</span>
-        <h3>Building scalable media ecosystems</h3>
-        <p>Lessons from launching multiple ventures in the creator economy. Exploring the frameworks and methodologies that enable sustainable growth in media businesses.</p>
-        <a href="#" class="read-more">Read more</a>
-      </div>
-      <div class="blog-post">
-        <span class="category">Media</span>
-        <h3>The future of independent publishing</h3>
-        <p>How digital platforms are reshaping content creation and distribution. Analyzing the evolution of publishing models and their impact on independent creators.</p>
-        <a href="#" class="read-more">Read more</a>
-      </div>
-    </div>
+    <div id="blog-grid" class="blog-grid"></div>
   </section>
 
   <footer class="footer">
     <h3>DGA Heirs</h3>
-    <p>Building digital ecosystems across music, media & technology.</p>
+    <p>Building digital ecosystems across music, media &amp; technology.</p>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="companies.html">Companies</a>
       <a href="mailto:contact@dgaheirs.com">Contact</a>
     </div>
-    <p class="copyright">© 2026 DGA Heirs. All rights reserved.</p>
+    <p class="copyright">&copy; 2026 DGA Heirs. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    fetch("/api/posts")
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to load posts");
+        return res.json();
+      })
+      .then(posts => {
+        const grid = document.getElementById("blog-grid");
+        if (!posts.length) {
+          grid.innerHTML = '<p class="empty-state">No posts yet. Create one in the admin dashboard.</p>';
+          return;
+        }
+
+        posts.forEach(post => {
+          const postDiv = document.createElement("div");
+          postDiv.classList.add("blog-post");
+          const category = post.tags && post.tags.length > 0 ? post.tags[0] : "Blog";
+          const content = post.content || "";
+          const truncatedContent = content.length > 150 ? content.substring(0, 150) + "..." : content;
+          postDiv.innerHTML = `
+            <span class="category">${category}</span>
+            <h3>${post.title || "Untitled post"}</h3>
+            <p>${truncatedContent}</p>
+            <a href="#" class="read-more">Read more</a>
+          `;
+          grid.appendChild(postDiv);
+        });
+      })
+      .catch(error => {
+        console.error("Failed to load posts:", error);
+        document.getElementById("blog-grid").innerHTML = '<p class="empty-state">Posts are unavailable right now.</p>';
+      });
+  </script>
 </body>
 </html>

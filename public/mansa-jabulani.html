@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Mansa Jabulani - music, streaming, and artist presence." />
   <meta name="keywords" content="Mansa Jabulani, Spotify, Apple Music, Audiomack, YouTube" />
   <meta name="author" content="Damilola G. Alonge" />
   <meta property="og:title" content="Mansa Jabulani" />
   <meta property="og:description" content="Discover Mansa Jabulani on Spotify, Apple Music, Audiomack, and YouTube." />
   <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="style.css" />
   <title>Mansa Jabulani - DGA Heirs</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <div class="nav-brand"><a href="index.html">DGA Heirs</a></div>
@@ -31,7 +32,7 @@
     </div>
     <div class="audio-player-block">
       <audio controls>
-        <source src="/music/song.mp3" type="audio/mpeg">
+        <source src="/music/song.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -41,41 +42,58 @@
         <span class="tag">Spotify</span>
         <h3>Spotify Page</h3>
         <p>Listen to Mansa Jabulani's latest music on Spotify with curated playlists and releases.</p>
-        <a class="preview-link" href="https://open.spotify.com/artist/6tke5ebtyAhkaMZSUbPwj7?si=OCuftCWtRYWMFkfpWsrQnQ" target="_blank">Open Spotify →</a>
+        <a class="preview-link" href="https://open.spotify.com/artist/6tke5ebtyAhkaMZSUbPwj7?si=OCuftCWtRYWMFkfpWsrQnQ" target="_blank" rel="noopener">Open Spotify &rarr;</a>
       </article>
       <article class="preview-card">
         <img class="platform-logo" src="images/apple.jpg" alt="Apple Music logo" />
         <span class="tag">Apple Music</span>
         <h3>Apple Music Page</h3>
         <p>Access Mansa Jabulani's catalog and listen across all Apple Music devices.</p>
-        <a class="preview-link" href="https://music.apple.com/us/artist/mansa-jabulani/1345729877" target="_blank">Open Apple Music →</a>
+        <a class="preview-link" href="https://music.apple.com/us/artist/mansa-jabulani/1345729877" target="_blank" rel="noopener">Open Apple Music &rarr;</a>
       </article>
       <article class="preview-card">
         <img class="platform-logo" src="images/audiomack.jpg" alt="Audiomack logo" />
         <span class="tag">Audiomack</span>
         <h3>Audiomack Page</h3>
         <p>Stream and share Mansa Jabulani tracks on Audiomack's platform.</p>
-        <a class="preview-link" href="https://audiomack.com/mansajabulani" target="_blank">Open Audiomack →</a>
+        <a class="preview-link" href="https://audiomack.com/mansajabulani" target="_blank" rel="noopener">Open Audiomack &rarr;</a>
       </article>
       <article class="preview-card">
         <img class="platform-logo" src="images/youtube.jpg" alt="YouTube logo" />
         <span class="tag">YouTube</span>
         <h3>YouTube Channel</h3>
         <p>Watch music videos, interviews, and live performances on YouTube.</p>
-        <a class="preview-link" href="https://youtube.com/@mansajabulani?si=n7YB_1Jqo5g3MzqO" target="_blank">Open YouTube →</a>
+        <a class="preview-link" href="https://youtube.com/@mansajabulani?si=n7YB_1Jqo5g3MzqO" target="_blank" rel="noopener">Open YouTube &rarr;</a>
       </article>
+    </div>
+  </section>
+
+  <section class="featured-releases reveal">
+    <div class="page-header">
+      <h2>Featured Releases</h2>
+      <p>Explore Mansa Jabulani's latest music releases.</p>
+    </div>
+    <div class="releases-slider">
+      <div class="slider-container">
+        <div class="slider-track" id="release-track"></div>
+      </div>
+      <div class="slider-nav">
+        <button class="slider-prev" aria-label="Previous release">&lsaquo;</button>
+        <div class="slider-dots" id="release-dots"></div>
+        <button class="slider-next" aria-label="Next release">&rsaquo;</button>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <h3>DGA Heirs</h3>
-    <p>Building digital ecosystems across music, media & technology.</p>
+    <p>Building digital ecosystems across music, media &amp; technology.</p>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="companies.html">Companies</a>
-      <a href="mailto:contact@dgaheirs.com">Contact</a>
+      <a href="mailto:dga@musicdistroglobal.com">Contact</a>
     </div>
-    <p class="copyright">© 2026 DGA Heirs. All rights reserved.</p>
+    <p class="copyright">&copy; 2026 DGA Heirs. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="DGA Heirs - Ebooks. Strategic guides and playbooks for creators and entrepreneurs." />
   <meta name="keywords" content="DGA Heirs, ebooks, music distribution, industry strategy, creator economy" />
   <meta name="author" content="Damilola G. Alonge" />
   <meta property="og:title" content="DGA Heirs - Ebooks" />
   <meta property="og:description" content="Publishing knowledge through strategic ebooks and guides." />
   <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="style.css" />
   <title>Ebooks - DGA Heirs</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="nav-container">
       <div class="nav-brand"><a href="index.html">DGA Heirs</a></div>
@@ -25,42 +25,61 @@
     </div>
   </nav>
 
-  <!-- EBOOKS -->
   <section class="ebooks-page">
     <div class="page-header">
       <h1>Ebooks</h1>
       <p>Strategic guides and playbooks for creators and entrepreneurs.</p>
     </div>
-    <div class="ebooks-grid">
-      <div class="ebook-card">
-        <h3>Music Distribution Blueprint</h3>
-        <p>How Independent Artists Scale</p>
-        <button>Read / Download</button>
-      </div>
-      <div class="ebook-card">
-        <h3>Industry Strategy Guide</h3>
-        <p>Building Sustainable Media Ventures</p>
-        <button>Read / Download</button>
-      </div>
-      <div class="ebook-card">
-        <h3>Creator Economy Playbook</h3>
-        <p>From Artist to Entrepreneur</p>
-        <button>Read / Download</button>
-      </div>
-    </div>
+    <div id="ebooks-grid" class="ebooks-grid"></div>
   </section>
 
   <footer class="footer">
     <h3>DGA Heirs</h3>
-    <p>Building digital ecosystems across music, media & technology.</p>
+    <p>Building digital ecosystems across music, media &amp; technology.</p>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="companies.html">Companies</a>
       <a href="mailto:contact@dgaheirs.com">Contact</a>
     </div>
-    <p class="copyright">© 2026 DGA Heirs. All rights reserved.</p>
+    <p class="copyright">&copy; 2026 DGA Heirs. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    fetch("/api/ebooks")
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to load ebooks");
+        return res.json();
+      })
+      .then(ebooks => {
+        const grid = document.getElementById("ebooks-grid");
+        if (!ebooks.length) {
+          grid.innerHTML = '<p class="empty-state">No ebooks yet. Upload one in the admin dashboard.</p>';
+          return;
+        }
+
+        ebooks.forEach(ebook => {
+          const card = document.createElement("div");
+          const fileUrl = ebook.fileUrl ? ebook.fileUrl.replace(/\\/g, "/") : "";
+          card.classList.add("ebook-card");
+          card.innerHTML = `
+            <h3>${ebook.title || "Untitled ebook"}</h3>
+            <p>${ebook.description || ""}</p>
+            <p>Price: ${ebook.isFree ? "Free" : "$" + (ebook.price || 0)}</p>
+            <button ${fileUrl ? `onclick="downloadEbook('${fileUrl}')"` : "disabled"}>Read / Download</button>
+          `;
+          grid.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Failed to load ebooks:", error);
+        document.getElementById("ebooks-grid").innerHTML = '<p class="empty-state">Ebooks are unavailable right now.</p>';
+      });
+
+    function downloadEbook(fileUrl) {
+      const normalizedUrl = "/" + fileUrl.replace(/\\/g, "/");
+      window.open(normalizedUrl, "_blank");
+    }
+  </script>
 </body>
 </html>

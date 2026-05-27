@@ -1,10 +1,19 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
+function databaseReady() {
+  return mongoose.connection.readyState === 1;
+}
+
 router.post("/register", async (req, res) => {
+  if (!databaseReady()) {
+    return res.status(503).json({ error: "Database is not connected" });
+  }
+
   try {
     if (!req.body.email || !req.body.password) {
       return res.status(400).json({ error: "Email and password are required" });
@@ -27,6 +36,10 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  if (!databaseReady()) {
+    return res.status(503).json({ error: "Database is not connected" });
+  }
+
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(404).send("User not found");
