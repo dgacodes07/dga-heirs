@@ -10,7 +10,7 @@
   <meta property="og:description" content="Discover Mansa Jabulani on Spotify, Apple Music, Audiomack, and YouTube." />
   <meta property="og:type" content="website" />
   <title>Mansa Jabulani - DGA Heirs</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="nav">
@@ -28,33 +28,43 @@
   <section class="featured-content reveal">
     <div class="page-header">
       <h1>Mansa Jabulani</h1>
-      <p>Explore the artist across major streaming platforms.</p>
+      <p>Explore my music across major streaming platforms.</p>
     </div>
     <div class="audio-player-block">
       <audio controls>
         <source src="/music/song.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
+
+      <iframe
+  width="100%"
+  height="500"
+  src="https://www.youtube.com/embed/QLo3G38EipY?autoplay=1&mute=1&loop=1&playlist=QLo3G38EipY"
+  frameborder="0"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+
     </div>
     <div class="preview-grid">
       <article class="preview-card">
         <img class="platform-logo" src="images/spotify.jpg" alt="Spotify logo" />
         <span class="tag">Spotify</span>
-        <h3>Spotify Page</h3>
+        <h3>Spotify</h3>
         <p>Listen to Mansa Jabulani's latest music on Spotify with curated playlists and releases.</p>
         <a class="preview-link" href="https://open.spotify.com/artist/6tke5ebtyAhkaMZSUbPwj7?si=OCuftCWtRYWMFkfpWsrQnQ" target="_blank" rel="noopener">Open Spotify &rarr;</a>
       </article>
       <article class="preview-card">
         <img class="platform-logo" src="images/apple.jpg" alt="Apple Music logo" />
         <span class="tag">Apple Music</span>
-        <h3>Apple Music Page</h3>
+        <h3>Apple Music</h3>
         <p>Access Mansa Jabulani's catalog and listen across all Apple Music devices.</p>
         <a class="preview-link" href="https://music.apple.com/us/artist/mansa-jabulani/1345729877" target="_blank" rel="noopener">Open Apple Music &rarr;</a>
       </article>
       <article class="preview-card">
         <img class="platform-logo" src="images/audiomack.jpg" alt="Audiomack logo" />
         <span class="tag">Audiomack</span>
-        <h3>Audiomack Page</h3>
+        <h3>Audiomack</h3>
         <p>Stream and share Mansa Jabulani tracks on Audiomack's platform.</p>
         <a class="preview-link" href="https://audiomack.com/mansajabulani" target="_blank" rel="noopener">Open Audiomack &rarr;</a>
       </article>
@@ -69,8 +79,8 @@
   </section>
 
   <section class="featured-releases reveal">
-    <div class="page-header">
-      <h2>Featured Releases</h2>
+    <div class="dropdown page-header">
+      <h2>Featured Releases</h2></button>
       <p>Explore Mansa Jabulani's latest music releases.</p>
     </div>
     <div class="releases-slider">
@@ -97,5 +107,21 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <script>
+const cards = document.querySelectorAll(".preview-card");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add("show");
+      }, index * 150);
+    }
+  });
+}, { threshold: 0.2 });
+
+cards.forEach(card => observer.observe(card));
+</script>
 </body>
 </html>

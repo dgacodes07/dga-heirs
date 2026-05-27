@@ -15,21 +15,21 @@ const ebooksPreviewData = [
 
 const releaseSlides = [
   {
-    title: "Release 1",
-    subtitle: "Mansa Jabulani",
-    description: "A premium square artwork presentation built for a flagship release.",
+    title: "Omo Ologo",
+    subtitle: "Mansa Jabulani Feat Seyi Vibez",
+    description: "Mansa Jabulani teams up with Seyi Vibez on Omo Ologo a street vibe jam with winning and shining despite the strugles.",
     artwork: "images/release-1-apple-3000.jpg",
     theme: "royal-gold",
-    year: "2026",
+    year: "2021",
     format: "Single"
   },
   {
-    title: "Release 2",
-    subtitle: "Mansa Jabulani",
-    description: "A cinematic deep-violet release slide with a collector-grade artwork frame.",
+    title: "Doreme",
+    subtitle: "Mansa Jabulani Feat MollyDVybe",
+    description: "Doreme is a smooth dancehall vibe where Molly flows on a catchy melody about girls dancing & parting.",
     artwork: "images/release-2-apple-3000.jpg",
     theme: "violet-noir",
-    year: "2026",
+    year: "2021",
     format: "Single"
   }
   /*
