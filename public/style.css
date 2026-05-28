@@ -10,6 +10,15 @@
   --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -1367,10 +1376,11 @@ body::selection {
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.preview-card.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
+.preview-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  filter: blur(8px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* hover effect */
@@ -1387,4 +1397,36 @@ body::selection {
 .preview-card:hover .platform-logo {
   transform: scale(1.08);
   filter: brightness(1.2);
+}
+h1 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 3rem);
+}
+
+p {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .preview-grid,
+  .companies-grid,
+  .ebooks-grid,
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
 }
