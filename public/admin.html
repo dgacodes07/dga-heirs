@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="description" content="Admin Dashboard - DGA Heirs" />
+  <meta name="description" content="DGA Heirs Admin Dashboard - DGA Heirs" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Dashboard</title>
+  <title>DGA Heirs Admin Dashboard</title>
   <style>
     * {
       margin: 0;
@@ -185,7 +185,7 @@
   <div id="dashboard" style="display: none;">
     <div class="container">
       <div class="header">
-        <h1>Admin Dashboard</h1>
+        <h1>DGA HeirsAdmin Dashboard</h1>
         <button class="logout-btn" onclick="logout()">Logout</button>
       </div>
 
@@ -257,8 +257,8 @@
           </div>
 
           <div class="form-group">
-            <label for="ebookCover">Cover Image URL</label>
-            <input id="ebookCover" type="url" placeholder="https://example.com/cover.jpg" />
+            <label for="ebookfile">File (JPEG, JPG, PNG etc.) *</label>
+            <input id="ebookCover" type="file" required accept="jpeg,.jpg,.png,." />
           </div>
 
           <button type="submit" class="btn-primary">Upload Ebook</button>
